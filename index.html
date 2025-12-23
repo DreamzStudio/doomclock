@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Prize</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark-rgb: 23 28 28;
+  --darker-rgb: 8 13 7;
+  --green: 9 252 8;
+  --blue: 59 130 246;
+  --pink: 231 60 126;
+  --background-rgb: 0 0 0;
+  --theme-rgb: var(--green);
+}
+
+@font-face {
+  font-family: "Digital7";
+  src: url("data:font/woff2;base64,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") format("woff2");
+}
+
+body {
+  background-color: black;
+  height: 100vh;  
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+}
+
+button {  
+  font-family: "Orbitron", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black; /* Pure black to let the glow pop */
+  overflow: hidden;
+}
+
+/* --- INTERACTIVE GLOW EFFECTS --- */
+
+@keyframes rotate {
+  from { rotate: 0deg; }
+  50% { scale: 1 1.5; }
+  to { rotate: 360deg; }
+}
+
+#blob {
+  background-color: white;
+  height: 34vmax;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  /* GREEN SMOKE GRADIENT */
+  background: linear-gradient(to right, #0f0, #00ff80); 
+  animation: rotate 20s infinite;
+  opacity: 0.8;
+  z-index: 1; /* Behind blur */
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2; /* In front of blob, behind clock */
+  backdrop-filter: blur(12vmax);
+}
+
+/* --- END GLOW EFFECTS --- */
+
+#shapes {
+  display: none; /* User deleted this */
+}
+
+#prize {
+  width: fit-content;
+  min-width: 90rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  /* Top layer to stay sharp */
+  z-index: 10;
+  background-color: rgb(var(--darker-rgb) / 50%); /* More transparent to see the glow */
+  border: 1.5rem solid rgb(255 255 255 / 2.5%);
+  padding: 8rem 4rem; 
+  box-shadow: 0rem 0rem 10rem 4rem rgb(0 0 0 / 75%);
+  backdrop-filter: blur(1rem);
+}
+
+#prize-label,
+#prize-text {
+  color: rgb(var(--theme-rgb));
+  text-align: center;
+}
+
+#prize-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 3rem;
+  opacity: 0.75;
+  margin-bottom: 0.5rem;
+}
+
+#prize-label > span { display: inline-flex; }
+#prize-label > .asterisk { padding-top: 0.25em; line-height: 0.5em; }
+
+/* --- THE LAYOUT ENGINE --- */
+
+#prize-text {  
+  display: flex;
+  gap: 2rem; 
+  align-items: flex-start; 
+}
+
+.clock-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 1rem;
+}
+
+p{
+    display: flex;
+    gap: 0.5rem;
+    height: 10rem; 
+    line-height: 10rem;
+    font-size: 11rem;
+    font-family: "Digital7", monospace;
+}
+
+.clock-numbers {
+    display: flex;
+    gap: 0.5rem;
+    height: 10rem; 
+    line-height: 10rem;
+    font-size: 11rem;
+    font-family: "Digital7", monospace;
+}
+
+.clock-label {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    opacity: 0.75;
+    color: rgb(var(--theme-rgb));
+}
+
+.clock-separator {
+    height: 10rem;
+    line-height: 9rem; 
+    font-size: 11rem;
+    color: rgb(var(--theme-rgb));
+    opacity: 0.5;
+    font-family: "Digital7", monospace;
+}
+
+.digit {  
+  width: 5rem;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.digit-track {  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; 
+  left: 0%;
+  top: 0%;
+  translate: 0% 0%;
+  transition: translate 3000ms cubic-bezier(.1,.67,0,1);
+}
+
+.prize-filter {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  pointer-events: none;
+}
+
+@keyframes pan-lines {
+  from { background-position: 0% 0%; }
+  to { background-position: 0% -100%; }
+}
+
+#prize-lines {
+  background: linear-gradient(
+    rgb(var(--darker-rgb) / 15%) 0%,
+    rgb(var(--darker-rgb) / 75%) 28%,
+    rgb(var(--darker-rgb) / 15%) 56%,
+    rgb(var(--darker-rgb) / 5%) 56%,
+    rgb(var(--darker-rgb) / 5%) 100%
+  );
+  background-size: 100% 7px;
+  z-index: 2;
+  animation: pan-lines 360s infinite linear;
+}
+
+#prize-shadow {
+  background: radial-gradient(
+    rgb(var(--theme-rgb) / 1%) 20%, 
+    rgb(var(--darker-rgb) / 80%) 70%
+  );
+  z-index: 3;
+}
+
+#actions-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  bottom: 2rem;
+  z-index: 20;
+}
+
+#actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: rgb(0 0 0 / 50%);
+  border: 1px solid rgb(255 255 255 / 5%);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(1rem);
+}
+
+#actions button {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0rem 1.5rem;
+  background-color: rgb(255 255 255 / 5%);  
+  border-radius: 0.25rem;
+  border: 1px solid rgb(255 255 255 / 5%);
+  color: white;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+}
+
+#actions button:is(:hover, :focus-visible) { background-color: rgb(255 255 255 / 7%); }
+#actions button:focus-visible { border-color: rgb(255 255 255 / 15%); }
+
+#redo-button > i { padding-top: 0.2rem; }
+
+#theme-actions { display: flex; gap: 0.5rem; }
+#theme-actions > .theme-button > i { color: white; font-size: 1.25rem; }
+#theme-actions > .theme-button[data-theme="green"][data-selected="true"] > i { color: rgb(var(--green)); }
+#theme-actions > .theme-button[data-theme="blue"][data-selected="true"] > i { color: rgb(var(--blue)); }
+#theme-actions > .theme-button[data-theme="pink"][data-selected="true"] > i { color: rgb(var(--pink)); }
+
+/* Scaling Logic */
+@media(max-width: 1900px) { #prize { scale: 0.8; } }
+@media(max-width: 1500px) { #prize { scale: 0.6; } }
+@media(max-width: 1100px) { #prize { scale: 0.45; } }
+@media(max-width: 750px) { #prize { scale: 0.3; } }
+@media(max-width: 450px) { #prize { scale: 0.2; } }
+
+/* --- NEW STYLES --- */
+
+#page-header {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    width: 100%;             /* Stretch across the whole screen */
+    padding: 0 2rem;         /* Add padding so items aren't touching the edges */
+    z-index: 100;
+    align-items: center;
+    display: flex;
+}
+
+#page-header {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    right: 2rem; /* Forces the header area to span to the right edge */
+    z-index: 100;
+    pointer-events: none; /* Allows you to click things 'under' the header if needed */
+}
+
+.header-logo {
+    height: 3rem;
+    width: auto;
+    pointer-events: auto; /* Makes logo clickable again */
+    object-fit: cover;      /* This "zooms" the image to fill the box */
+    object-position: center; 
+    scale: 2;
+}
+
+.trailer-button {
+    position: absolute;
+    right: 5rem;   /* This snaps it to the far right of the screen */
+    top: 50%;   /* Centers it vertically relative to the logo */
+    transform: translateY(-50%);
+    
+    background: black;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    pointer-events: auto; /* Makes button clickable */
+}
+
+.trailer-button:hover {
+    background-color: rgb(20 20 20);
+    box-shadow: 0 0 1rem rgb(var(--theme-rgb) / 50%);
+    border-color: rgb(var(--theme-rgb));
+}
+
+@media(max-width: 750px) {
+    #page-header {
+        top: 1rem;
+        left: 1rem;
+        gap: 0.75rem;
+        flex-direction: column; /* Stack on tiny screens to avoid covering clock */
+        align-items: flex-start;
+    }
+    .header-logo {
+        height: 2.5rem;
+    }
+    .trailer-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+}
+
+.whois {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    bottom: 10rem;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    letter-spacing: 2px; /* Increased spacing looks better with Orbitron */
+    z-index: 10;
+    pointer-events: none;
+}
+
+.credits-bar {
+    position: absolute;
+    bottom: 1.5rem;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    z-index: 10;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+</style>
+
+</head>
+<body>
+<div id="app">
+  
+  <div id="blob"></div>
+  <div id="blur"></div>
+
+  <div id="prize">
+    <div id="prize-lines" class="prize-filter"></div>
+    <div id="prize-shadow" class="prize-filter"></div>
+    
+    <h2 id="prize-label">
+      <span class="asterisk">*</span>
+      <span>DOOMSDAY CLOCK</span>
+      <span class="asterisk">*</span>      
+    </h2>
+    
+    <div id="prize-text"></div>
+  </div>
+
+  <div class="whois">
+    Steve Rogers will return in Avengers: Doomsday.
+</div>
+  
+
+  <header id="page-header">
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2e317a1c-f1ce-4a5f-90db-d88cc01db2d0/djfy5im-14bd78aa-ba81-4c7f-b341-e427a03ab4cc.png/v1/fill/w_828,h_465/avengers_doomsday_new_logo_png_hd_2025_by_mrandrew7w7_djfy5im-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDY1IiwicGF0aCI6Ii9mLzJlMzE3YTFjLWYxY2UtNGE1Zi05MGRiLWQ4OGNjMDFkYjJkMC9kamZ5NWltLTE0YmQ3OGFhLWJhODEtNGM3Zi1iMzQxLWU0MjdhMDNhYjRjYy5wbmciLCJ3aWR0aCI6Ijw9ODI4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.8GvLd56lHW0TXjE1vl4BnLxc5BSqLXAMrRQ2RSZKTKo" alt="Marvel Logo" class="header-logo">
+      <a href="https://www.youtube.com/watch?v=UiMg566PREA" target="_blank" class="trailer-button">Watch Trailer</a> 
+  </header>
+
+  <div class="credits-bar">
+    Made by sat, Gemini & ChatGPT.
+</div>
+  
+<script>
+/* -- BLOB LOGIC -- */
+const blob = document.getElementById("blob");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 3000, fill: "forwards" });
+}
+
+/* -- CLOCK LOGIC -- */
+const targetDate = new Date("2026-12-18T00:00:00");
+const MINIMUM_ADDITIONAL_ITERATION_COUNT = 2;
+const config = { additionalIterationCount: Math.max(MINIMUM_ADDITIONAL_ITERATION_COUNT, 3), transitionDuration: 3000, digits: [0,1,2,3,4,5,6,7,8,9] };
+
+const getPrizeText = () => document.getElementById("prize-text"),
+      getTracks = () => document.querySelectorAll(".digit > .digit-track"),
+      determineIterations = index => index + config.additionalIterationCount;
+
+const getCountdownDigits = () => {
+    const now = new Date();
+    let yearsDiff = targetDate.getFullYear() - now.getFullYear();
+    let monthsDiff = targetDate.getMonth() - now.getMonth() + yearsDiff * 12;
+    let futureThisMonth = new Date(now.getFullYear(), now.getMonth() + monthsDiff, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    if(futureThisMonth > targetDate) monthsDiff--;
+    const months = monthsDiff;
+    let diff = targetDate - new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    diff = Math.floor(diff / 1000); 
+    const days = Math.floor(diff / 86400); diff %= 86400;
+    const hours = Math.floor(diff / 3600); diff %= 3600;
+    const minutes = Math.floor(diff / 60);
+    const seconds = diff % 60;
+    return [Math.floor(months/10), months%10, Math.floor(days/10), days%10, Math.floor(hours/10), hours%10, Math.floor(minutes/10), minutes%10, Math.floor(seconds/10), seconds%10];
+};
+
+const createElement = (type, className, text) => {
+    const el = document.createElement(type); el.className = className; if(text !== undefined) el.innerText = text; return el;
+}
+
+const createDigit = (digit, trackIndex) => {
+    const digitElement = createElement("span", "digit");
+    const trackElement = createElement("span", "digit-track");
+    let digitsArr = [];
+    const iterations = determineIterations(trackIndex);
+    for(let i=0;i<iterations;i++){ digitsArr = [...digitsArr, ...config.digits]; }
+    trackElement.innerText = digitsArr.join(" ");
+    trackElement.style.transitionDuration = `${config.transitionDuration}ms`;
+    digitElement.appendChild(trackElement);
+    return digitElement;
+}
+
+const setup = () => {
+    const container = getPrizeText(); container.innerHTML = "";
+    const labels = ["MONTHS", "DAYS", "HOURS", "MINUTES", "SECONDS"];
+    labels.forEach((labelText, index) => {
+        const group = createElement("div", "clock-group");
+        const numbersRow = createElement("div", "clock-numbers");
+        numbersRow.appendChild(createDigit(0, index * 2));
+        numbersRow.appendChild(createDigit(0, index * 2 + 1));
+        const label = createElement("div", "clock-label", labelText);
+        group.appendChild(numbersRow); group.appendChild(label);
+        container.appendChild(group);
+        if(index < labels.length - 1) { container.appendChild(createElement("div", "clock-separator", ":")); }
+    });
+}
+
+let isFirstRun = true;
+const animate = () => {
+    const digitsArray = getCountdownDigits();
+    getTracks().forEach((track, index) => {
+        const digit = digitsArray[index];
+        const iterations = determineIterations(index);
+        const activeDigit = ((iterations - 1) * 10) + digit;
+        if (isFirstRun) { track.style.transitionDuration = `${config.transitionDuration}ms`; } else { track.style.transitionDuration = '800ms'; }
+        track.style.translate = `0rem ${activeDigit * -10}rem`;
+    });
+    isFirstRun = false; 
+}
+
+const resetTrackPosition = track => {
+    track.style.transitionDuration = "0ms"; track.style.translate = "0rem 0rem"; track.offsetHeight; track.style.transitionDuration = `${config.transitionDuration}ms`;
+}
+const resetAnimation = () => { getTracks().forEach(track => resetTrackPosition(track)); }
+
+window.onload = () => { setup(); animate(); setInterval(animate, 1000); };
+const handleRedo = () => { resetAnimation(); animate(); }
+const updateTheme = theme => {
+    document.documentElement.style.setProperty("--theme-rgb", `var(--${theme})`);
+    for(const button of document.querySelectorAll(".theme-button")){ button.dataset.selected = theme === button.dataset.theme; }
+}
+const handleChangeTheme = e => updateTheme(e.currentTarget.dataset.theme);
+updateTheme("green");
+</script>
+</body>
+</html>
