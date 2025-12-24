@@ -361,11 +361,11 @@ p{
 .whois {
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
-    bottom: 10rem;
+    bottom: 3rem;
     width: 100%;
     text-align: center;
     color: rgba(255, 255, 255, 0.4);
-    font-size: 0.75rem;
+    font-size: 1.3rem;
     letter-spacing: 2px; /* Increased spacing looks better with Orbitron */
     z-index: 10;
     pointer-events: none;
@@ -382,6 +382,18 @@ p{
     z-index: 10;
     pointer-events: none;
     text-transform: uppercase;
+}
+
+.credits-bar a {
+    color: inherit; /* Keeps it the same light grey as the text */
+    text-decoration: none;
+    transition: 0.3s;
+    pointer-events: auto; /* Important: makes the link clickable */
+}
+
+.credits-bar a:hover {
+    color: rgb(var(--theme-rgb)); /* Glows green/blue/pink on hover */
+    text-shadow: 0 0 5px rgb(var(--theme-rgb));
 }
 </style>
 
@@ -403,11 +415,13 @@ p{
     </h2>
     
     <div id="prize-text"></div>
-  </div>
 
-  <div class="whois">
+    <div class="whois">
     Steve Rogers will return in Avengers: Doomsday.
 </div>
+  </div>
+
+  
   
 
   <header id="page-header">
@@ -416,7 +430,8 @@ p{
   </header>
 
   <div class="credits-bar">
-    Made by sat, Gemini & ChatGPT.
+    Made by sat, Gemini & ChatGPT.<br>
+    Base Template by <a href="https://codepen.io/Hyperplexed" target="_blank">Hyperplexed</a>.
 </div>
   
 <script>
