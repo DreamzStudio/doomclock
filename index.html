@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown Prize</title>
+<title>Doom is coming!</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -302,7 +302,7 @@ p{
 #page-header {
     position: absolute;
     top: 2rem;
-    left: 2rem;
+    left: 1rem;
     right: 2rem; /* Forces the header area to span to the right edge */
     z-index: 100;
     pointer-events: none; /* Allows you to click things 'under' the header if needed */
@@ -314,7 +314,7 @@ p{
     pointer-events: auto; /* Makes logo clickable again */
     object-fit: cover;      /* This "zooms" the image to fill the box */
     object-position: center; 
-    scale: 2;
+    scale: 1.1;
 }
 
 .trailer-button {
@@ -425,16 +425,52 @@ p{
   
 
   <header id="page-header">
-      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2e317a1c-f1ce-4a5f-90db-d88cc01db2d0/djfy5im-14bd78aa-ba81-4c7f-b341-e427a03ab4cc.png/v1/fill/w_828,h_465/avengers_doomsday_new_logo_png_hd_2025_by_mrandrew7w7_djfy5im-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDY1IiwicGF0aCI6Ii9mLzJlMzE3YTFjLWYxY2UtNGE1Zi05MGRiLWQ4OGNjMDFkYjJkMC9kamZ5NWltLTE0YmQ3OGFhLWJhODEtNGM3Zi1iMzQxLWU0MjdhMDNhYjRjYy5wbmciLCJ3aWR0aCI6Ijw9ODI4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.8GvLd56lHW0TXjE1vl4BnLxc5BSqLXAMrRQ2RSZKTKo" alt="Marvel Logo" class="header-logo">
+      <img src="https://static.wikia.nocookie.net/logopedia/images/a/ac/Avengers_Doomsday_%282025%29.png" alt="Marvel Logo" class="header-logo">
       <a href="https://www.youtube.com/watch?v=UiMg566PREA" target="_blank" class="trailer-button">Watch Trailer</a> 
   </header>
 
   <div class="credits-bar">
-    Made by <a href="https://twitter.com/sat.24" target="_blank">sat</a>, Gemini & ChatGPT.<br>
+    Made by <a href="https://x.com/DreamzTalks" target="_blank">sat</a>, Gemini & ChatGPT.<br>
     Base Template by <a href="https://codepen.io/Hyperplexed" target="_blank">Hyperplexed</a>.
 </div>
+
+<audio id="bg-loop" loop playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2025/04/05/audio_708c18bfbd.mp3?filename=slow-cinematic-clock-ticking-tension-2-323078.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
   
 <script>
+
+  const bgAudio = document.getElementById("bg-loop");
+
+// This function attempts to play the audio
+const playMusic = () => {
+    bgAudio.play().catch(err => console.log("Audio waiting for click..."));
+};
+
+// 1. Try to play on window load (might be blocked)
+window.onload = () => { 
+    setup(); 
+    resetAnimation(); 
+    setTimeout(animate, 50);
+    setInterval(animate, 1000);
+    
+    // Try to play immediately
+    playMusic();
+};
+
+// 2. UNLOCK AUDIO: Play as soon as the user clicks anywhere
+window.addEventListener("click", () => {
+    playMusic();
+}, { once: true }); // 'once: true' ensures this only runs on the first click
+
+// 3. Update Redo to also trigger play
+const handleRedo = () => { 
+    resetAnimation(); 
+    animate(); 
+    playMusic(); 
+};
+
 /* -- BLOB LOGIC -- */
 const blob = document.getElementById("blob");
 
@@ -521,15 +557,22 @@ const resetTrackPosition = track => {
 }
 const resetAnimation = () => { getTracks().forEach(track => resetTrackPosition(track)); }
 
-window.onload = () => { setup(); animate(); setInterval(animate, 1000); };
-const handleRedo = () => { resetAnimation(); animate(); }
-const updateTheme = theme => {
-    document.documentElement.style.setProperty("--theme-rgb", `var(--${theme})`);
-    for(const button of document.querySelectorAll(".theme-button")){ button.dataset.selected = theme === button.dataset.theme; }
-}
+window.onload = () => { 
+    setup();           // Creates the clock structure
+    resetAnimation();  // Force all digits to 0 position immediately
+    
+    // Small delay ensures the browser registers the "0" position 
+    // before starting the long transition to the actual time
+    setTimeout(() => {
+        animate(); 
+    }, 50);
+
+    setInterval(animate, 1000); // Keep it updating every second
+};
+
 const handleChangeTheme = e => updateTheme(e.currentTarget.dataset.theme);
 updateTheme("green");
 </script>
-</body>
 
+</body>
 </html>
